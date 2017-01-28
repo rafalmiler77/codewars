@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>cubes</title>
+</head>
+<body>
+<script>
+
+  function findNum(m) {
+    let n;
+    let sum = 0;
+    for (n = 1; n < m ; n += 1) {
+      sum = sum + (Math.pow(n,3))
+
+      console.log('iter: ', n,'addedNumber: ',Math.pow(n,3),'sum: ', sum)
+      if (sum == m) {
+        console.log('Found')
+        return n
+      }
+    }
+    console.log('Not Found')
+    return (-1)
+  }
+
+  console.log(findNum(208589416890625));
+
+  function findNum2(m) {
+    var n = 0
+    while (m > 0) m -=  ++n**3
+    console.log(m,n)
+    return m ? -1 : n
+  }
+  console.log(findNum2(208589416890625));
+
+</script>
+</body>
+</html>
