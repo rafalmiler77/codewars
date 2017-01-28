@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Median</title>
+</head>
+<body>
+<script>
+  var arr = [33,99,100,30,29,50]
+var sortedArr = arr.sort(function (a,b) {
+  return a-b
+})
+  console.log(sortedArr)
+  sortedArr.length%2 !==0 ?
+
+     console.log(sortedArr[Math.floor(sortedArr.length/2)])
+//    console.log('modulo',sortedArr.length%2)
+  :
+   console.log((sortedArr[sortedArr.length/2]+sortedArr[(sortedArr.length/2)-1])/2)
+
+
+  function median(array) {
+
+    var sortedArr = array.sort(function (a,b) {
+      return a-b
+    })
+    if (sortedArr.length%2 !==0) {
+      return sortedArr[Math.floor(sortedArr.length/2)]
+    } else {
+      return (sortedArr[sortedArr.length/2]+sortedArr[(sortedArr.length/2)-1])/2
+    }
+  }
+
+  console.log(median([33,99,100,30,29,50]))
+</script>
+</body>
+</html>

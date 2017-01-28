@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>validatePIN</title>
+</head>
+<body>
+<script>
+//    function validatePIN(pin) {
+//      pin.map(
+//        pinValue
+//    )
+//    }
+//
+//  function validatePIN(pin) {
+//    let result = [];
+//
+//    pin.toString().split('').map(
+//      pinValue => {
+//
+//        pinValue = parseInt(pinValue);
+//        console.log('pinValue', pinValue)
+//        result = result.concat(pinValue);
+//        console.log(result)
+//        typeof pinValue === 'NaN'
+//          ?
+//          console.log(pinValue, 'is not a number')
+//          :
+//        console.log(pinValue, 'is a number')
+//
+//
+//
+//
+//      }
+//    )
+//  //  let finalresult = result.join('');
+//  //  console.log(finalresult)
+//  }
+  validatePIN(1234)
+  validatePIN('1a34')
+  validatePIN('12,a')
+
+
+</script>
+<script>
+
+  function validatePIN(pin) {
+    let checkIfDigits = /[^0-9]/
+    if ((pin.toString().length == 4 || pin.toString().length == 6) && checkIfDigits.test(pin) === true) {
+      return true
+    }
+    else
+      return false
+  }
+
+  validatePIN("1234")
+  validatePIN("12345")
+  validatePIN("ac34")
+</script>
+</body>
+</html>

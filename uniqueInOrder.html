@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>uniqueInOrder</title>
+</head>
+<body>
+<script>
+  let example = [1,2,2,3,3]
+  let example2 = 'AAAABBBCCDAABBB'
+
+  //  let exampleToArray = example.split('')
+  //  console.log(exampleToArray)
+  //
+  //// with filter and index
+  //let filteredArray = exampleToArray.filter(function (item,index, array) {
+  //  console.log(item, index, array[index])
+  //   return array[index] !== array[index+1]
+  //});
+  //  console.log('filteredArray:',filteredArray)
+
+  // with filter and item
+  //let filteredArray = exampleToArray.filter(function (item,index) {
+  //  return item === 'A'
+  //});
+  //console.log(filteredArray)
+
+  // with iteration
+  //var finalArray = [];
+  //  var i;
+  //  for (i=0;i<filteredArray.length;i+=1){
+  //
+  //    if(filteredArray[i] === 'A'){
+  //      finalArray = finalArray.concat(filteredArray[i])
+  //      console.log(finalArray)
+  //    }
+  //  }
+  var uniqueInOrder=function(iterable) {
+    var iterableToArray = iterable
+    if (typeof iterable !== 'object'){
+      var iterableToArray = iterable.split('')}
+    console.log(iterableToArray)
+    var newArray = iterableToArray.filter(function (item, index, array) {
+//    console.log(item, index, array[index])
+      console.log(typeof array[index])
+      return array[index] !== array[index + 1]
+    });
+    console.log(newArray)
+    return newArray
+  }
+  console.log('unique:', uniqueInOrder(example2))
+
+
+
+  var uniqueInOrder2 = function (iterable)
+  {
+    return [].filter.call(iterable, (function (a, i) { return iterable[i - 1] !== a }));
+  }
+
+  var uniqueInOrder3=function(iterable){
+    return Array.prototype.reduce.call(iterable, function(a,b) { if (a[a.length-1] !== b) a.push(b); return a; }, []);
+  }
+
+  var uniqueInOrder4=function(iterable){
+    return Array.prototype.filter.call(iterable, function(current, index){ return iterable[index - 1] !== current})
+  }
+</script>
+</body>
+</html>
