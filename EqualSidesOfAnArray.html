@@ -6,12 +6,39 @@
 </head>
 <body>
 <script>
-  let array = [1,2,3,4,3,2,1]
+  let array = [1, 2, 3, 4, 3, 2, 1];
+  let array2 = [20,10,30,10,10,15,35];
 
-  function findEvenIndex(arr)
-  {
-    //Code goes here!
+console.log(array)
+//  console.log(array.slice(3))
+  function findEvenIndex(arr) {
+    if (arr.length < 3) {
+      return (-1)
+    }
+    let i;
+    for (i = 0; i < arr.length; i += 1) {
+      let checkedNum = arr[i];
+      let numbersOnRight = arr.slice(i + 1)
+      let numbersOnLeft = arr.slice(0, i)
+      console.log('checkedNum', checkedNum, 'numbersOnLeft', numbersOnLeft, 'numbersOnRight', numbersOnRight)
+
+      let numbersOnRightSum = numbersOnRight.reduce(
+        (a, b) => (a + b), 0
+      )
+      console.log('numbersOnRightSum', numbersOnRightSum)
+      let numbersOnLeftSum = numbersOnLeft.reduce(
+        (a, b) => (a + b), 0
+      )
+      console.log('numbersOnLeftSum', numbersOnLeftSum)
+      if (numbersOnRightSum == numbersOnLeftSum) {
+        return console.log('success ', i)
+      }
+    }
+    return (-1)
   }
+  findEvenIndex(array)
+
+
 
 
 </script>
