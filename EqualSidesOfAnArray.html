@@ -10,7 +10,7 @@
   let array2 = [20,10,30,10,10,15,35];
 
 console.log(array)
-//  console.log(array.slice(3))
+  console.log(array.slice(3))
   function findEvenIndex(arr) {
     if (arr.length < 3) {
       return (-1)
@@ -36,9 +36,44 @@ console.log(array)
     }
     return (-1)
   }
-  findEvenIndex(array)
 
+  // refactored
 
+  function findEvenIndex2(arr) {
+    if (arr.length < 3) {
+      return (-1)
+    }
+    let i;
+    for (i = 0; i < arr.length; i += 1) {
+
+      if (
+        arr.slice(i + 1).reduce(
+          (a, b) => (a + b), 0
+        )
+        ==
+        arr.slice(0, i).reduce(
+          (a, b) => (a + b), 0
+        )
+      ) {
+        return console.log('success ', i)
+      }
+    }
+    return (-1)
+  }
+  findEvenIndex2(array)
+
+    // refactored:
+
+  function findEvenIndexRefactored(arr) {
+    if (arr.length < 3) {
+      return (-1)
+    }
+    let numbersOnRight = arr.filter(function(item,index, array) {
+      return array[index] > array[index + 1]
+    })
+console.log(numbersOnRight)
+  }
+  findEvenIndexRefactored(array)
 
 
 </script>
