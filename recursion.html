@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>recursion</title>
+</head>
+<body>
+<script>
+  let categories = [
+    {id: 'animals', parent: null},
+    {id: 'mammals', parent: 'animals'},
+    {id: 'cats', parent: 'mammals'},
+    {id: 'dogs', parent: 'mammals'},
+    {id: 'labrador', parent: 'dogs'},
+    {id: 'persiena', parent: 'cats'},
+    {id: 'siamsee', parent: 'cats'}
+  ]
+  let makeTree = (categories, parent) => {
+    let result = {}
+    categories.filter(
+      item => item.parent === parent
+    ).forEach(
+      item => result[item.id] = makeTree(categories, item.id)
+    )
+    return result
+  }
+  console.log(makeTree(categories, null))
+</script>
+</body>
+</html>
