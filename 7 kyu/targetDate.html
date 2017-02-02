@@ -27,34 +27,35 @@
   You have: a0 > 0, p% > 0, a >= a0
 </p>
 <script>
-  function date_nb_days (a0, a, p){
-    let moneyDeposit = a0;
-    let moneySumReached = a;
-    let annualRate = p/100;
-    let dayRate = p/36000
+  function dateNbDays(a0, a, p) {
+    let moneySumDeposit = a0;
+    let moneySumDesired = a;
+    let dayRate = p / 36000
     const depositDate = new Date("January 01, 2016");
-    let withdrawalDate
-    let sumIncrese  = moneySumReached -  moneyDeposit;
-    let dailyIncrease = moneyDeposit*dayRate;
+    let depositDayToMilisec = Date.parse(depositDate)
     let dayCounter = 0
     let i
-    for (i=0; i<1000;i+=i){
-      moneyDeposit = moneyDeposit + (moneyDeposit*dayRate)
-      dayCounter = dayCounter + 1
-      if (moneyDeposit >=moneySumReached){
-        console.log('Reached, days number: ', dayCounter)
+    for (i = 0; i < 100000; i += i) {
+      moneySumDeposit += moneySumDeposit * dayRate
+      dayCounter += 1
+      if (moneySumDeposit >= moneySumDesired) {
         break;
       }
     }
-//    if (moneySumReached)
-//    console.log('dailyIncrease', dailyIncrease)
-//    let daysPassed = sumIncrese/dailyIncrease;
-//    console.log('daysPassed', daysPassed)
+    function timeElapsed(dayCounter) {
+      let milisecElapsed = dayCounter * 24 * 60 * 60 * 1000
+      let totalMilisecElapsed = milisecElapsed + depositDayToMilisec
+      let desiredDate = new Date(totalMilisecElapsed);
+      let desiredDateFormatted = desiredDate.getFullYear() + "-" + (desiredDate.getMonth() + 1) + "-" + desiredDate.getDate()
+      console.log(desiredDateFormatted)
+      return desiredDateFormatted
+    }
 
+    return timeElapsed(dayCounter)
   }
-  date_nb_days(100, 101, 0.98)
+  dateNbDays(100, 101, 0.98)
 
-  date_nb_days(100, 150, 2.00)
+  dateNbDays(100, 150, 2.00)
 </script>
 </body>
 </html>
