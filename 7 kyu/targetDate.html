@@ -29,10 +29,32 @@
 <script>
   function date_nb_days (a0, a, p){
     let moneyDeposit = a0;
-    let moneySumToday = a;
-    let rate = p;
+    let moneySumReached = a;
+    let annualRate = p/100;
+    let dayRate = p/36000
+    const depositDate = new Date("January 01, 2016");
+    let withdrawalDate
+    let sumIncrese  = moneySumReached -  moneyDeposit;
+    let dailyIncrease = moneyDeposit*dayRate;
+    let dayCounter = 0
+    let i
+    for (i=0; i<1000;i+=i){
+      moneyDeposit = moneyDeposit + (moneyDeposit*dayRate)
+      dayCounter = dayCounter + 1
+      if (moneyDeposit >=moneySumReached){
+        console.log('Reached, days number: ', dayCounter)
+        break;
+      }
+    }
+//    if (moneySumReached)
+//    console.log('dailyIncrease', dailyIncrease)
+//    let daysPassed = sumIncrese/dailyIncrease;
+//    console.log('daysPassed', daysPassed)
 
   }
+  date_nb_days(100, 101, 0.98)
+
+  date_nb_days(100, 150, 2.00)
 </script>
 </body>
 </html>
