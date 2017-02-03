@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>mispelled</title>
+</head>
+<body>
+<p>
+  It checks if the word2 differs from word1 by only one character.
+
+  This can include an extra char at the end or the beginning of either of words.
+
+  In the tests, the mispelled word will always differ only by one character.
+  mispelled('versed', 'xersed'); // returns true
+  mispelled('versed', 'applb'); // returns false
+  mispelled('versed', 'v5rsed'); // returns true
+  mispelled('1versed', 'versed'); // returns true
+</p>
+<script>
+  var mispelled = function (word1, word2) {
+    if (word1.length == word2.length) {
+      var errorCounter = 0;
+      word2.split('');
+      word1.split('').forEach(function (item, index, arr) {
+        if (arr[index] !== word2[index]) {
+          errorCounter +=1
+        } else {
+          console.log(item)
+        }
+      })
+      if (errorCounter <=1) {
+        console.log('match, because error number is: ',errorCounter)
+      } else {
+        console.log('no match, because error number is: ',errorCounter)
+      }
+    }
+
+  }
+  mispelled('versed', 'v5rsed')
+  mispelled('versed', 'applbe')
+  mispelled('versed', 'v5rsed')
+</script>
+</body>
+</html>
