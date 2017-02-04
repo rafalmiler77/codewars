@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<p>
+  list([ {name: 'Bart'}, {name: 'Lisa'}, {name: 'Maggie'} ])
+  // returns 'Bart, Lisa & Maggie'
+
+  list([ {name: 'Bart'}, {name: 'Lisa'} ])
+  // returns 'Bart & Lisa'
+
+  list([ {name: 'Bart'} ])
+  // returns 'Bart'
+
+  list([])
+  // returns ''
+
+</p>
+<script>
+
+function list(names){
+  let flattenedArray = []
+  names.map(item =>
+    flattenedArray.push(item.name)
+  )
+  console.log(' flattenedArray:',  flattenedArray)
+
+  if (flattenedArray.length <= 1){
+    return flattenedArray.toString()
+  }
+
+  let arrayMinusLast = flattenedArray.filter((item,index,arr) =>
+    { return arr[index] !== arr[arr.length-1]}
+  )
+  console.log(arrayMinusLast)
+
+  let ArrPartOne = arrayMinusLast.toString().replace(/\W/g,", ")
+  console.log(ArrPartOne)
+  let ArrPartTwo = (' & ').concat(flattenedArray[flattenedArray.length-1])
+  console.log(ArrPartTwo)
+  let finalArray = ArrPartOne.concat(ArrPartTwo)
+  console.log(finalArray)
+  return finalArray
+}
+ console.log(list([{name: 'Bart'},{name: 'Lisa'},{name: 'Maggie'},{name: 'Homer'},{name: 'Marge'}]))
+console.log(list([ {name: 'Bart'} ]))
+
+
+</script>
+</body>
+</html>
