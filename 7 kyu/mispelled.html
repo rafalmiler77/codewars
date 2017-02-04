@@ -8,19 +8,7 @@
 <script>
   var mispelled = function (word1, word2) {
 
-    if (word1.length == word2.length) {
-      var errorCounter = 0;
-      word1.split('').forEach(function (item, index) {
-        if (item !== word2.split('')[index]) {
-          errorCounter += 1
-        }
-      })
-      if (errorCounter <= 1) {
-        return true
-      }
-    }
-
-    if (((word1.length > word2.length) && ((word1.length - word2.length) < 2)) ||
+    if (((word1.length >= word2.length) && ((word1.length - word2.length) < 2)) ||
     ((word2.length > word1.length) && ((word2.length - word1.length) < 2))) {
       var errorCounter = 0;
       word1.split('').forEach(function (item, index, arr) {
