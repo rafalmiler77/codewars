@@ -32,32 +32,19 @@
 <script>
   function revrot(str, sz) {
     let w=[]
-    let strin = ''
-let arr = str.split('')
-  let z = arr.reduce(function (prev,curr,index,array){
-    console.log(prev,typeof prev,curr, typeof curr)
-     if (curr <9) {return strin.concat(prev + curr)}
-},'');
-    let cut = arr.filter(function(a,b){
-
-    })
-console.log('arr[sz]',arr[sz])
-console.log('w',w)
-console.log('z',z)
-console.log('strin',strin)
-
+    let arr = str.split('')
+    console.log('arr.length: ',arr.length)
+    while (arr.length >= sz) {
+      let splicedArr = arr.splice(0, sz)
+      console.log('splicedArr: ', splicedArr)
+      console.log('arr: ', arr)
+      w.push(splicedArr.join(''))
+      console.log('w: ', w)
+      console.log('arr.length: ', arr.length)
+    }
   }
   revrot("123456987654", 6)
- let s = "123456987654"
-  console.log(s)
-  var total = '';
-  var numbers = s.split('');
-  console.log('numbers', numbers)
-  for ( var i = 0; i < numbers[2]; i++ ){
-    console.log(numbers[i])
-    total = total.concat(numbers[i]);
-  }
-  console.log('total: ', total)
+
 </script>
 </body>
 </html>
