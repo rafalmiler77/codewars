@@ -31,21 +31,40 @@
 </p>
 <script>
   function revrot(str, sz) {
-    let w=[]
+    if (str === '' || sz <= 0) {
+      return ''
+    }
+    let finalArray = []
+    let finalString = ''
     let arr = str.split('')
-    console.log('arr.length: ',arr.length)
+    console.log('arr.length: ', arr.length)
     while (arr.length >= sz) {
       let splicedArr = arr.splice(0, sz)
       console.log('splicedArr: ', splicedArr)
       console.log('arr: ', arr)
-      w.push(splicedArr.join(''))
-      console.log('w: ', w)
-      console.log('arr.length: ', arr.length)
+
+      let sumOfCubes = splicedArr.reduce((total, next) => {
+        return total + Math.pow(parseInt(next),3)
+      }, 0)
+      let changedString
+      console.log('sumOfCubes: ', sumOfCubes)
+      if (sumOfCubes % 2 === 0) {
+        changedString = splicedArr.reverse().join('')
+        console.log('reversedArr: ', changedString)
+      } else {
+        splicedArr.push(splicedArr.shift())
+        changedString = splicedArr.join('')
+        console.log('shiftedArr: ', changedString)
+      }
+//      finalArray.push(splicedArr.join(''))
+      finalString += changedString
     }
+    console.log('finalArray: ', finalArray)
+    console.log('finalString: ', finalString)
+    return finalString
   }
-  revrot("123456987654", 6)
+  revrot("123456987653", 6)
 
 </script>
 </body>
 </html>
-<!--if (curr <15) {return w.concat(prev + curr)}-->
