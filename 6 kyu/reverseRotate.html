@@ -34,32 +34,24 @@
     if (str === '' || sz <= 0) {
       return ''
     }
-    let finalArray = []
     let finalString = ''
     let arr = str.split('')
-    console.log('arr.length: ', arr.length)
+
     while (arr.length >= sz) {
       let splicedArr = arr.splice(0, sz)
-      console.log('splicedArr: ', splicedArr)
-      console.log('arr: ', arr)
-
       let sumOfCubes = splicedArr.reduce((total, next) => {
         return total + Math.pow(parseInt(next),3)
       }, 0)
-      let changedString
-      console.log('sumOfCubes: ', sumOfCubes)
+
+      let partialFinalString
       if (sumOfCubes % 2 === 0) {
-        changedString = splicedArr.reverse().join('')
-        console.log('reversedArr: ', changedString)
+        partialFinalString = splicedArr.reverse().join('')
       } else {
         splicedArr.push(splicedArr.shift())
-        changedString = splicedArr.join('')
-        console.log('shiftedArr: ', changedString)
+        partialFinalString = splicedArr.join('')
       }
-//      finalArray.push(splicedArr.join(''))
-      finalString += changedString
+      finalString += partialFinalString
     }
-    console.log('finalArray: ', finalArray)
     console.log('finalString: ', finalString)
     return finalString
   }
