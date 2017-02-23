@@ -7,10 +7,18 @@
 <body>
 <p>
   #FF00FF should output #00FF00
-
 </p>
 <script>
   var colorHex = '#FF00FF'
+
+  function getOppositeValue(colorVal) {
+    var midPoint = 255 / 2;
+    return colorVal > midPoint ?
+      colorVal - ((colorVal - midPoint) * 2)
+      :
+      colorVal + ((midPoint - colorVal) * 2)
+  }
+
   function oppositeHexColorPicker(colorHex) {
     var slicedHex = colorHex.slice(1, colorHex.length)
       .match(new RegExp('.{2}', 'g'))
@@ -27,24 +35,9 @@
       })
     slicedHex.unshift('#')
     var result = slicedHex.join('')
-    console.log('slicedHex: ', slicedHex)
-    console.log('result: ', result)
-
-//  console.log(colorDec)
     return result
-}
-  console.log(oppositeHexColorPicker(colorHex))
-
-  function getOppositeValue(colorVal) {
-    var midPoint = 255 / 2;
-    var changedVal;
-    if (colorVal > midPoint) {
-      changedVal = colorVal - ((colorVal - midPoint) * 2)
-    } else {
-      changedVal = colorVal + ((midPoint - colorVal) * 2)
-    }
-    return changedVal
   }
+  console.log(oppositeHexColorPicker(colorHex))
 
 </script>
 </body>
