@@ -11,38 +11,40 @@
 </p>
 <script>
   var colorHex = '#FF00FF'
-function oppositeHexColorPicker(colorHex){
-  var colorDec = colorHex.slice(1, colorHex.length);
-  var slicedHex = colorDec.match(new RegExp('.{2}', 'g'))
-    .map(function(item){
-      return parseInt(item,16)
-    }).map(getOppositeValue)
-    .map(function(item){
-      return item.toString(16)
-    }).map(function(item){
-      if (item.length === 1){
-        return '0'.concat(item)
-      }
-      return item
-    })
-  console.log('slicedHex: ', slicedHex)
+  function oppositeHexColorPicker(colorHex) {
+    var slicedHex = colorHex.slice(1, colorHex.length)
+      .match(new RegExp('.{2}', 'g'))
+      .map(function (item) {
+        return parseInt(item, 16)
+      }).map(getOppositeValue)
+      .map(function (item) {
+        return item.toString(16)
+      }).map(function (item) {
+        if (item.length === 1) {
+          return '0'.concat(item)
+        }
+        return item
+      })
+    slicedHex.unshift('#')
+    var result = slicedHex.join('')
+    console.log('slicedHex: ', slicedHex)
+    console.log('result: ', result)
 
-  console.log(colorDec)
+//  console.log(colorDec)
+    return result
 }
   console.log(oppositeHexColorPicker(colorHex))
 
-  function getOppositeValue(colorVal){
-    var midPunkt = 255/2;
+  function getOppositeValue(colorVal) {
+    var midPoint = 255 / 2;
     var changedVal;
-    if (colorVal > midPunkt){
-      changedVal = colorVal - ((colorVal - midPunkt)*2)
+    if (colorVal > midPoint) {
+      changedVal = colorVal - ((colorVal - midPoint) * 2)
     } else {
-      changedVal = colorVal + ((midPunkt - colorVal)*2)
+      changedVal = colorVal + ((midPoint - colorVal) * 2)
     }
-return changedVal
+    return changedVal
   }
-
-
 
 </script>
 </body>
