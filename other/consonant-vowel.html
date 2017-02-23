@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>1</title>
+</head>
+<body>
+<p>
+  Create a word of five letters, beginning with a consonant, followed by a vowel, and so on.
+</p>
+
+<script>
+
+  function getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  var randomChar = function () {
+    var randomLetter = getRandomIntInclusive(1, 26)
+    var getBaseNumber = function () {
+      var num = Math.random()
+      if (num <= 0.5)
+        return 64
+      else
+        return 96
+    }
+    var randomCharCode = randomLetter + getBaseNumber()
+    return String.fromCharCode(randomCharCode);
+  }
+
+  function isVowel(char) {
+    return ['a', 'ą', 'e', 'ę', 'i', 'o', 'ó', 'u', 'y'].indexOf(char.toLowerCase()) !== -1
+  }
+
+  function generateWord() {
+    var word = '';
+
+    while (word.length < 5) {
+      var rndChar = randomChar()
+
+      if (word.length % 2 !== 0 && isVowel(rndChar) === true) {
+        word += rndChar
+      }
+      else if (word.length % 2 === 0 && isVowel(rndChar) === false) {
+        word += rndChar
+      }
+    }
+    return word;
+  }
+  console.log(generateWord())
+
+</script>
+</body>
+</html>

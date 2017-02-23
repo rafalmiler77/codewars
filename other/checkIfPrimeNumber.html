@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<p>Check if a number N is a prime number
+</p>
+<script>
+  function findOptimus(N) {
+    N = prompt('Podaj liczbę N (0<N<999) i sprawdź w konsoli czy jest liczbą pierwszą');
+if (N < 0 || N>999){
+  console.log('Podana liczba musi być w przedziale 0-999')
+  findOptimus()
+  return false
+}
+if (/[^0-9]/g.test(N) === true){
+  console.log('Podana liczba musi być cyfrą')
+  findOptimus()
+  return false
+}
+    checkIfPrimeNumber(N);
+    function checkIfPrimeNumber(x) {
+      var i;
+      if (x <= 2) {
+        console.log("Liczba " + x + " nie jest liczbą pierwszą")
+        return false;
+      }
+      for (i = 2; i < x; i += 1) {
+        if (x % i === 0) {
+          console.log("Liczba " + x + " nie jest liczbą pierwszą")
+          return false
+        }
+      }
+      console.log("Liczba " + x + " jest liczbą pierwszą");
+    }
+  }
+  findOptimus()
+</script>
+</body>
+</html>

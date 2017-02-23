@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>tura sedzia</title>
+</head>
+<body>
+<p>Count vowels in a given word.
+</p>
+<script>
+
+  var str = "W praktyce do wiadomości można zatem dołączyć na przykład plik .exe."
+
+  function isVowel(char) {
+    return ['a', 'ą', 'e', 'ę', 'i', 'o', 'ó', 'u', 'y'].indexOf(char.toLowerCase()) !== -1
+  }
+  function countVowels(str) {
+    var counter = 0;
+    str.split('').forEach(function (item) {
+      if (isVowel(item) === true) {
+        counter += 1
+      }
+    })
+    return counter
+  }
+
+console.log(countVowels (str))
+
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fibonacci</title>
+</head>
+<body>
+<script>
+
+  var checkIfInFibonacci = function (n) {
+    var a = 0, b = 1, f = 1;
+    for (var i = 2; i <= 17; i++) {
+      f = a + b;
+      a = b;
+      b = f;
+      console.log('a: ', a, 'b: ', b, 'f: ', f)
+      if (n === a) {
+        console.log('Liczba ' + n + ' należy do ciągu Fibonacciego')
+        return
+      }
+    }
+    return f;
+  };
+  console.log(checkIfInFibonacci(233))
+</script>
+</body>
+</html>
