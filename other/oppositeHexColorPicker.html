@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Opposite HEX</title>
+</head>
+<body>
+<p>
+  #FF00FF should output #00FF00
+
+</p>
+<script>
+  var colorHex = '#FF00FF'
+function oppositeHexColorPicker(colorHex){
+  var colorDec = colorHex.slice(1, colorHex.length);
+  var slicedHex = colorDec.match(new RegExp('.{2}', 'g'))
+    .map(function(item){
+      return parseInt(item,16)
+    }).map(getOppositeValue)
+    .map(function(item){
+      return item.toString(16)
+    }).map(function(item){
+      if (item.length === 1){
+        return '0'.concat(item)
+      }
+      return item
+    })
+  console.log('slicedHex: ', slicedHex)
+
+  console.log(colorDec)
+}
+  console.log(oppositeHexColorPicker(colorHex))
+
+  function getOppositeValue(colorVal){
+    var midPunkt = 255/2;
+    var changedVal;
+    if (colorVal > midPunkt){
+      changedVal = colorVal - ((colorVal - midPunkt)*2)
+    } else {
+      changedVal = colorVal + ((midPunkt - colorVal)*2)
+    }
+return changedVal
+  }
+
+
+
+</script>
+</body>
+</html>
